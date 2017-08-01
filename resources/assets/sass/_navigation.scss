@@ -1,0 +1,184 @@
+/* NAVIGATION STYLES
+-----------------------*/
+
+$navigation-bar-height: 48px !default;
+
+[ui-view=navigation] {
+    height: $navigation-bar-height;
+}
+
+.navigation {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    height: $navigation-bar-height;
+    padding: 0;
+
+    background-color: $navigation-bar-colour;
+    .action-bar-inner,
+    .top-bar-left,
+    .top-bar-right {
+        max-width: none;
+        height: 100%;
+        padding: 0;
+    }
+    .top-bar-left {
+        float: none;
+        overflow: hidden;
+
+        text-align: right;
+    }
+    .top-bar-client-logo {
+        position: relative;
+        top: 50%;
+        left: -0.5rem;
+
+        float: left;
+
+        width: 96px;
+        height: 96px;
+        margin: 0;
+        padding: 0;
+
+        transform: translate(0,-50%);
+        transform: translate3d(0,-50%,0);
+        vertical-align: middle;
+
+        border-radius: 50%;
+        background: transparent url(/img/client.png) center center no-repeat;
+        background-size: 96px 96px;
+    }
+    .top-bar-menu-toggle {
+        top: 2px;
+        left: -16px;
+
+        display: inline-block;
+        float: left;
+
+        vertical-align: middle;
+        md-icon {
+            transition: all 300ms ease;
+
+            color: $navigation-bar-link-colour;
+        }
+    }
+    .top-bar-navigation-menu {
+        background-color: transparent;
+        li {
+            display: inline-block;
+
+            list-style: none;
+            &:hover {
+                .md-button {
+                    color: $navigation-bar-link-hover-colour;
+                    background-color: $navigation-bar-link-hover-button-colour;
+                }
+            }
+            &.active {
+                .md-button {
+                    color: $navigation-bar-link-active-colour;
+                    border-bottom-color: $navigation-bar-link-active-button-colour;
+                    background-color: transparent;
+                }
+            }
+            a {
+                padding: 0;
+            }
+            .md-button {
+                font-size: 0.85rem;
+
+                overflow: hidden;
+
+                min-width: 0;
+                height: $navigation-bar-height;
+                margin: 0 0.5rem;
+                padding-right: 0.7rem;
+                padding-left: 0.7rem;
+
+                text-transform: none;
+
+                color: $navigation-bar-link-colour;
+                border-bottom: 3px solid transparent;
+                border-radius: 0;
+                .md-ripple-container {
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+    .top-bar-navigation-menu:hover {
+        .icon path {
+            fill: $navigation-bar-link-hover-colour;
+        }
+    }
+    .top-bar-user-menu {
+        padding: 0;
+
+        background-color: transparent;
+        li {
+            &.active a {
+                border-bottom-color: $navigation-bar-link-active-button-colour;
+            }
+            a {
+                box-sizing: border-box;
+                height: $navigation-bar-height;
+                padding: 0;
+
+                border-bottom: 3px solid transparent;
+                :hover {
+                    md-icon {
+                        color: $navigation-bar-link-hover-colour;
+                    }
+                }
+                .md-button {
+                    margin-top: 2px;
+                    padding: 0.5rem;
+                }
+                md-icon {
+                    transition: all 300ms ease;
+
+                    color: $navigation-bar-link-colour;
+                }
+            }
+        }
+    }
+}
+
+.top-navigation-admin.ng-enter,
+.top-navigation-admin.ng-leave {
+    transition: transform 300ms ease;
+}
+
+.top-navigation-admin.ng-enter,
+.top-navigation-admin.ng-leave.ng-leave-active {
+    transform: translate3d(0,-100%,0);
+    transform: translate3(0,-100%);
+}
+
+.top-navigation-admin.ng-leave,
+.top-navigation-admin.ng-enter.ng-enter-active {
+    transform: none;
+    transform: none;
+}
+
+@include breakpoint(medium) {
+    .navigation {
+        .top-bar-client-logo {
+            left: auto;
+        }
+        .top-bar-menu-toggle {
+            left: -8px;
+        }
+    }
+}
+
+@include breakpoint(large) {
+    .navigation {
+        .action-bar-inner {
+            padding: 0 1rem;
+        }
+    }
+}

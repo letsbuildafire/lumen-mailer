@@ -1,0 +1,424 @@
+/* TEMPLATES STYLES
+-----------------------*/
+
+/**
+ * Lists
+ */
+
+.la-list-grid.la-templates table[md-table] {
+    tbody tr[md-row] {
+        position: relative;
+
+        margin: 0 auto 1rem;
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+
+        background-color: transparent !important;
+        td[md-cell] {
+            padding: 0;
+            &.template-details {
+                font-weight: bold;
+
+                position: relative;
+
+                width: 100%;
+                padding: 1.5rem 1rem 1rem;
+
+                text-align: center;
+
+                color: $white;
+            }
+        }
+    }
+    tbody tr[md-row]:hover {
+        .template-name {
+            transition-delay: 0ms;
+            transform: none;
+
+            opacity: 1;
+        }
+        .template-actions > .md-button {
+            transform: none;
+
+            opacity: 1;
+            @for $i from 0 through 5 {
+                &:nth-child(#{$i}) {
+                    transition-delay: $i * 100ms;
+                }
+            }
+        }
+        .template-actions-admin .md-button {
+            transition-delay: 300ms;
+            transform: none;
+
+            opacity: 1;
+        }
+        .template-created,
+        .template-updated,
+        .template-preview {
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.template-name {
+    font-size: 1.1rem;
+
+    margin-bottom: 1rem;
+
+    transition: all 300ms ease 200ms;
+
+    opacity: 1;
+}
+
+.template-actions {
+    .md-button {
+        display: block;
+        clear: both;
+
+        width: 128px;
+        margin: 0 auto 0.4rem;
+
+        transition: all 300ms ease;
+
+        opacity: 1;
+    }
+    .md-button:not(.md-warn):not(.md-accent):not(.md-raised) {
+        background-color: $white !important;
+    }
+    & > .md-button {
+        @for $i from 0 through 5 {
+            &:nth-child(#{$i}) {
+                transition-delay: (5 - $i) * 75ms;
+            }
+        }
+        md-icon {
+            line-height: 36px;
+
+            float: left;
+
+            vertical-align: middle;
+        }
+    }
+}
+
+.template-actions-admin {
+    display: block;
+
+    margin-bottom: 0.2rem;
+    > .md-button {
+        display: inline-block;
+
+        width: auto;
+        margin-bottom: 0;
+
+        transition-delay: 75ms;
+        vertical-align: middle;
+    }
+}
+
+.template-created,
+.template-updated {
+    position: absolute;
+    right: 0;
+    bottom: 1rem;
+    left: 0;
+
+    margin: auto;
+
+    transition: opacity 300ms ease;
+
+    opacity: 1;
+    text-shadow: 0 0.3rem 0.2rem rgba(0,0,0,0.3);
+}
+
+.template-preview {
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+
+    width: 90%;
+    max-width: 240px;
+    height: 100%;
+    padding: 0;
+
+    transform: translate(-50%, -50%);
+    transform: translate3d(-50%, -50%, 0);
+
+    border: 1px solid palette(Black, Disabled) !important;
+    background-color: $light-gray;
+    box-shadow: $shadow-level-1;
+    &:before,
+    &:after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        display: block;
+
+        margin: auto;
+
+        content: "";
+    }
+    &:before {
+        font-family: "Material Icons";
+        font-size: 32px;
+        line-height: 100%;
+
+        z-index: 0;
+
+        width: 32px;
+        height: 32px;
+
+        content: "\E5D5";
+        animation: spin 2000ms infinite;
+        text-align: center;
+
+        opacity: 0.4;
+        color: $dark-gray;
+    }
+    &:after {
+        z-index: 2;
+
+        transition: opacity 300ms ease;
+
+        opacity: 1;
+        background-color: rgba(0,0,0,0.45);
+    }
+}
+
+.template-preview iframe {
+    position: relative;
+    z-index: 1;
+
+    overflow: hidden;
+
+    width: 300%;
+    height: 300%;
+
+    transform: scale(0.333);
+    transform: scale3d(0.333, 0.333, 0.333);
+    transform-origin: 0 0;
+}
+
+@include breakpoint(medium) {
+    .template-name {
+        transform: translate(0, -1rem);
+        transform: translate3d(0, -1rem, 0);
+
+        opacity: 0;
+    }
+    .template-actions {
+        .md-button {
+            transform: translate(0, 1rem);
+            transform: translate3d(0, 1rem, 0);
+
+            opacity: 0;
+        }
+    }
+    .template-preview {
+        &:after {
+            opacity: 0;
+            background-color: rgba(0,0,0,0.7);
+        }
+    }
+    .template-created,
+    .template-updated {
+        opacity: 0;
+    }
+}
+
+@media(max-width: 480px) {
+    .la-list-grid.la-templates table[md-table] {
+        tbody tr[md-row] {
+            width: 100%;
+        }
+    }
+}
+
+/**
+ * Preview Modal
+ */
+
+.modal-template-preview {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background-color: $modal-overlay;
+    .template-preview-frame {
+        position: relative;
+
+        width: 100vw;
+        max-width: 720px;
+        height: 100vh;
+        padding: 10vh 0;
+
+        @include breakpoint(medium) {
+            width: 95vw;
+            padding: 10vh 0.9375rem;
+        }
+        &:before {
+            z-index: 0;
+
+            width: 24px;
+            height: 24px;
+
+            content: "";
+            animation: spin 2000ms infinite;
+
+            opacity: 0.4;
+            background: transparent url(/fonts/icons/spinner8.svg) center center no-repeat;
+            background-size: 24px 24px;
+        }
+    }
+    .template-preview-bar {
+        padding-right: 0;
+        padding-left: 0;
+
+        background-color: transparent;
+        h4 {
+            font-weight: bold;
+            line-height: 48px;
+
+            color: $white;
+            text-shadow: $text-shadow-level-1;
+        }
+        .md-button:not(.md-raised) {
+            display: inline-block;
+
+            margin-right: 0;
+            margin-left: 0.5rem;
+
+            vertical-align: middle;
+
+            background-color: $white !important;
+        }
+    }
+    iframe {
+        position: relative;
+
+        overflow: hidden;
+
+        width: 100%;
+        height: auto;
+        min-height: 100%;
+        margin: 0 auto;
+
+        border: none;
+        outline: none;
+        background-color: $light-gray;
+    }
+}
+
+.modal-template-preview.ng-enter,
+.modal-template-preview.ng-leave {
+    transition: background 300ms ease;
+    .template-preview-frame {
+        transition: all 400ms ease;
+    }
+}
+
+.modal-template-preview.ng-enter {
+    background-color: rgba(0, 0, 0, 0);
+    .template-preview-frame {
+        transform: translate(0, 4rem);
+        transform: translate3d(0, 4rem, 0);
+
+        opacity: 0;
+    }
+}
+
+.modal-template-preview.ng-enter.ng-enter-active {
+    background-color: rgba(0, 0, 0, 0.3);
+    .template-preview-frame {
+        transform: none;
+
+        opacity: 1;
+    }
+}
+
+.modal-template-preview.ng-leave {
+    background-color: rgba(0, 0, 0, 0.3);
+    .template-preview-frame {
+        transform: none;
+
+        opacity: 1;
+    }
+}
+
+.modal-template-preview.ng-leave.ng-leave-active {
+    background-color: rgba(0, 0, 0, 0);
+    .template-preview-frame {
+        transform: translate(0, 4rem);
+        transform: translate3d(0, 4rem, 0);
+
+        opacity: 0;
+    }
+}
+
+/**
+ * Forms
+ */
+
+.la-form-templates {
+    padding-bottom: 2rem;
+    .template-content {
+        margin-bottom: 2rem;
+    }
+    .preview-frame {
+        position: relative;
+
+        overflow: hidden;
+
+        height: 500px;
+
+        border: 1px solid darken($light-gray, 5%);
+        background-color: $light-gray;
+        box-shadow: 0 0.2rem 0.3rem 0.2rem $light-gray;
+        &:before {
+            position: absolute;
+            z-index: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+
+            display: block;
+
+            width: 32px;
+            height: 32px;
+            margin: auto;
+
+            content: "";
+            animation: spin 2000ms infinite;
+
+            opacity: 0.4;
+            background: transparent url(/fonts/icons/spinner8.svg) center center no-repeat;
+            background-size: 32px 32px;
+        }
+        iframe {
+            z-index: 1;
+
+            overflow: hidden;
+
+            width: 200%;
+            height: 1000px;
+
+            transform: scale(0.5);
+            transform: scale3d(0.5, 0.5, 0.5);
+            transform-origin: 0 0;
+
+            border: none;
+            outline: none;
+        }
+    }
+}

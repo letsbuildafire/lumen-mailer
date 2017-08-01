@@ -1,0 +1,130 @@
+/* TYPOGRAPHY
+-----------------------*/
+
+$text-aligns: left right center justify;
+
+/**
+ * Font Imports
+ */
+
+@font-face {
+    font-family: "Material Icons";
+    font-weight: 400;
+    font-style: normal;
+
+    src: local("Material Icons"), local("MaterialIcons-Regular"), url(https://fonts.gstatic.com/s/materialicons/v14/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format("woff2");
+}
+
+.material-icons {
+    font-family: "Material Icons";
+    font-size: 24px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+
+    display: inline-block;
+
+    white-space: nowrap;
+    letter-spacing: normal;
+    text-transform: none;
+    word-wrap: normal;
+
+    direction: ltr;
+    -webkit-font-feature-settings: "liga";
+    -webkit-font-smoothing: antialiased;
+}
+
+/**
+ * Formatting
+ */
+
+html,
+body {
+    color: $body-font-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    &.primary {
+        color: $primary-theme-heading-colour;
+    }
+}
+
+ul {
+    &.unstyled {
+        margin-bottom: 0;
+        margin-left: 0;
+
+        list-style: none;
+    }
+}
+
+.serif {
+    font-family: $body-serif-font-family;
+}
+
+.sans-serif {
+    font-family: $body-font-family;
+}
+
+.emphasis {
+    font-weight: bold;
+}
+
+.hint {
+    font-size: 12px;
+    line-height: 22px;
+
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+    text-align: left;
+
+    color: palette(Black, Hint Text);
+}
+
+.colour-warn {
+    color: $warn-theme-colour;
+}
+
+.colour-primary {
+    color: $primary-theme-colour;
+}
+
+.colour-accent {
+    color: $accent-theme-colour;
+}
+
+.colour-success {
+    color: $success-theme-colour;
+}
+
+.middle-align {
+    vertical-align: middle;
+}
+
+@each $text-align in $text-aligns {
+    @include breakpoint(medium) {
+        .medium-text-#{$text-align} {
+            text-align: #{$text-align} !important;
+        }
+    }
+    @include breakpoint(large) {
+        .large-text-#{$text-align} {
+            text-align: #{$text-align} !important;
+        }
+    }
+    @include breakpoint(xlarge) {
+        .xlarge-text-#{$text-align} {
+            text-align: #{$text-align} !important;
+        }
+    }
+    .text-#{$text-align} {
+        text-align: #{$text-align};
+    }
+    .force-text-#{$text-align} {
+        text-align: #{$text-align} !important;
+    }
+}

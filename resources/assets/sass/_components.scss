@@ -1,0 +1,199 @@
+/* COMPONENTS STYLE
+-----------------------*/
+
+/**
+ * Buttons
+ */
+
+.md-button {
+    font-size: 0.8rem;
+
+    height: 36px;
+
+    transition: background-color 200ms ease;
+
+    border-radius: 1.1rem;
+    box-shadow: none !important;
+    &.md-success {
+        background-color: $success-theme-colour !important;
+    }
+    &.md-mini {
+        min-width: 0;
+    }
+    &:not(.md-mini) {
+        padding-right: 0.75rem;
+        padding-left: 0.75rem;
+    }
+    .md-ripple-container {
+        border-radius: 1.1rem;
+    }
+}
+
+/**
+ * Subheader
+ */
+
+.md-subheader {
+    position: relative;
+
+    min-height: 48px;
+    &.collapse {
+        .md-subheader-inner {
+            padding-right: 0;
+            padding-left: 0;
+        }
+    }
+    &.short-subheader {
+        .md-subheader-inner {
+            padding: 0 1rem;
+        }
+    }
+    .md-subheader-inner {
+        height: 100%;
+    }
+    .md-subheader-content {
+        font-size: 0.95rem;
+        font-weight: normal;
+        line-height: 48px;
+    }
+}
+
+@include breakpoint(large) {
+    .md-subheader {
+        min-height: 64px;
+        .md-subheader-content {
+            line-height: 64px;
+        }
+    }
+}
+
+/**
+ * Tooltips
+ */
+
+md-tooltip.md-show {
+    z-index: 5000;
+}
+
+/**
+ * Action Bars
+ */
+
+.action-bar {
+    padding: 0.5rem 0;
+
+    background: $action-bar-colour;
+    &.bottom-bar {
+        position: relative;
+
+        max-width: 100vw;
+        margin: 0 auto;
+
+        background: $bottom-bar-colour;
+    }
+    .action-bar-inner {
+        float: none;
+
+        max-width: $global-width;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+}
+
+@include breakpoint(medium) {
+    .action-bar {
+        h5 {
+            line-height: 48px;
+        }
+    }
+}
+
+@include breakpoint(large) {
+    .action-bar {
+    }
+}
+
+/**
+ * Loading Indicator Bar
+ */
+
+#loading-bar .bar {
+    height: 4px;
+
+    background: $loading-bar-colour;
+}
+
+/**
+ * Chips
+ */
+
+md-chips {
+    &.action-chips {
+        .md-chip {
+            cursor: pointer;
+        }
+    }
+}
+
+/**
+ * Toasts
+ */
+
+md-toast {
+    position: fixed !important;
+    z-index: 10000;
+}
+
+/**
+ * Loading Indicator
+ */
+
+.spinner {
+    font-size: 10px;
+    line-height: 100vh;
+
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+
+    text-align: center;
+
+    background: $modal-overlay-light;
+}
+
+.spinner > div {
+    display: inline-block;
+
+    width: 0.4rem;
+    height: 3.5rem;
+    margin: 0 0.05rem;
+
+    animation: colour-stretch 1.2s infinite ease-in-out;
+    vertical-align: middle;
+
+    background-color: $primary-theme-colour;
+    box-shadow: $shadow-level-1;
+}
+
+.spinner .rect2 {
+    animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+    animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+    animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+    animation-delay: -0.8s;
+}

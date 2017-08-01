@@ -1,0 +1,188 @@
+/* BASE STYLE
+-----------------------*/
+
+html {
+    height: 100%;
+
+    background-color: $body-background;
+
+    text-size-adjust: none;
+}
+
+body {
+    height: auto;
+    min-height: 100%;
+    min-height: 100vh;
+}
+
+nav,
+main,
+article {
+    height: auto;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+}
+
+[ui-view=content],
+[ui-view=page-content] {
+    position: relative;
+
+    width: 100%;
+    min-height: calc(100vh - #{$navigation-bar-height});
+
+    background-color: $body-background;
+}
+
+[ui-view=page-content] {
+    padding-top: 1rem;
+}
+
+@include breakpoint(large) {
+    [ui-view=page-content] {
+        padding-top: 2rem;
+    }
+}
+
+/**
+ * Header-Content Layout
+ */
+
+header.header-content-layout-header {
+    .action-bar.top-bar {
+        background: $top-bar-colour;
+        .top-bar-left {
+            h5 {
+                font-size: 1.4rem;
+                font-weight: 500;
+
+                margin: 0.5rem auto;
+
+                color: $top-bar-text-colour;
+            }
+        }
+        .top-bar-right {
+            text-align: center;
+            .md-button {
+                font-size: 0.8rem;
+
+                margin-right: 0;
+
+                vertical-align: middle;
+            }
+            .md-button,
+            .md-button md-icon {
+                color: $top-bar-button-text-colour !important;
+            }
+            .md-button[disabled],
+            .md-button[disabled] md-icon {
+                color: darken($bottom-bar-button-text-colour, 20%) !important;
+            }
+            .md-button[disabled],
+            .md-button.md-primary:not(:hover),
+            .md-button[md-theme]:not(.md-raised) {
+                background-color: $top-bar-button-colour;
+            }
+        }
+    }
+}
+
+section.header-content-layout-content {
+    min-height: calc(100vh - 160px);
+    padding: 0 1rem;
+    .top-bar-left {
+        position: relative;
+    }
+}
+
+@include breakpoint(medium) {
+    header.header-content-layout-header {
+        .action-bar.top-bar {
+            .top-bar-left {
+                h5 {
+                    font-size: 1.8rem;
+
+                    margin: 0 auto;
+                }
+            }
+            .top-bar-right {
+                text-align: right;
+            }
+        }
+    }
+    section.header-content-layout-content {
+        min-height: calc(100vh - 12rem);
+    }
+}
+
+/**
+ * Header-Content-Footer Layout
+ */
+
+header.header-content-footer-layout-header {
+    @extend header.header-content-layout-header;
+}
+
+section.header-content-footer-layout-content {
+    @extend section.header-content-layout-content;
+}
+
+footer.header-content-footer-layout-footer {
+    @extend header.header-content-layout-content;
+    .action-bar.bottom-bar {
+        .md-button {
+            font-size: 0.8rem;
+
+            margin-right: 0;
+
+            vertical-align: middle;
+        }
+        .md-button,
+        .md-button md-icon {
+            color: $bottom-bar-button-text-colour !important;
+        }
+        .md-button[disabled],
+        .md-button[disabled] md-icon {
+            color: darken($bottom-bar-button-text-colour, 20%) !important;
+        }
+        .md-button[disabled],
+        .md-button.md-primary:not(:hover),
+        .md-button[md-theme]:not(.md-raised) {
+            background-color: $bottom-bar-button-colour;
+        }
+    }
+}
+
+@include breakpoint(medium) {
+    header.header-content-footer-layout-header {
+        .action-bar.top-bar {
+            .top-bar-left {
+                h5 {
+                    font-size: 1.8rem;
+                }
+            }
+            .top-bar-right {
+                text-align: right;
+            }
+        }
+    }
+    section.header-content-footer-layout-content {
+        min-height: calc(100vh - 13rem);
+    }
+}
+
+/**
+ * Animations
+ */
+
+// Base transition to enable nested animations
+[ui-view=page-content].ng-enter,
+[ui-view=page-content].ng-leave {
+    transition: opacity 300ms ease;
+}
+
+[ui-view=page-content].ng-leave {
+    opacity: 0;
+}

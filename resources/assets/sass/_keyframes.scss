@@ -1,0 +1,53 @@
+/* ANIMATIONS STYLES
+-----------------------*/
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        transform: scale3d(1,1,1);
+    } to {
+        transform: scale(1.333);
+        transform: scale3d(1.333,1.333,1.333);
+
+        opacity: 0;
+    }
+}
+
+@keyframes pulse-blur {
+    from {
+        transform: scale(1);
+        transform: scale3d(1,1,1);
+
+        filter: blur(0px);
+    } to {
+        transform: scale(1.333);
+        transform: scale3d(1.333,1.333,1.333);
+
+        opacity: 0;
+
+        filter: blur(10px);
+    }
+}
+
+@keyframes colour-stretch {
+    0%,
+    40%,
+    100% {
+        transform: scaleY(0.4);
+
+        background-color: palette(Black, Icons);
+    }  20% {
+        transform: scaleY(1.0);
+
+        background-color: $primary-theme-colour;
+    }
+}

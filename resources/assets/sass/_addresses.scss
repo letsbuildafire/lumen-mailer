@@ -1,0 +1,98 @@
+/* ADDRESS LISTS STYLE
+-----------------------*/
+
+/**
+ * Lists
+ */
+
+.la-list-address_list {
+}
+
+
+/**
+ * Forms
+ */
+
+.la-form-address_list {
+    .default_fields {
+        md-input-container {
+            margin-bottom: 0;
+            md-icon {
+                color: palette(Black, Disabled);
+            }
+        }
+    }
+    .custom_fields {
+        min-height: 6rem;
+        padding: 0 0 2rem;
+    }
+    .custom_fields-field {
+        md-icon {
+            cursor: pointer;
+
+            color: $warn-theme-colour;
+        }
+    }
+    .la-list-list_addresses {
+        margin-bottom: 4rem;
+    }
+}
+
+@include breakpoint(medium) {
+    .la-form-address_list {
+        .la-list-list_addresses {
+            margin-bottom: 6rem;
+        }
+    }
+}
+
+/**
+ * Import
+ */
+
+.state-admin-lists-import {
+    section.content {
+        position: relative;
+
+        margin-top: 1rem;
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            display: block;
+
+            width: 100vw;
+            height: 100%;
+
+            content: "";
+            transform: translate(-50%,-50%);
+            transform: translate3d(-50%,-50%,0);
+
+            background-color: $form-step-background-colour;
+        }
+    }
+}
+
+.la-form-address_import {
+    .form-step-header-row {
+        .header-row-toggle button {
+            margin: 0 auto 1rem;
+        }
+        .header-row-toggle md-switch {
+            margin: 0 1rem 1rem;
+        }
+    }
+}
+
+.la-import-preview {
+    padding-top: 2rem;
+}
+
+@include breakpoint(medium) {
+    .state-admin-lists-import {
+        section.content {
+            min-height: calc(100vh - 9rem);
+        }
+    }
+}

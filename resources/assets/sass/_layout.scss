@@ -1,0 +1,207 @@
+/* LAYOUT STYLES
+-----------------------*/
+
+$sides: top right bottom left;
+$floats: left right none;
+$displays: block inline-block inline;
+
+@each $side in $sides {
+    @include breakpoint(medium) {
+        .medium-no-margin-#{$side} {
+            margin-#{$side}: 0 !important;
+        }
+        .medium-no-padding-#{$side} {
+            padding-#{$side}: 0 !important;
+        }
+    }
+    @include breakpoint(large) {
+        .large-no-margin-#{$side} {
+            margin-#{$side}: 0 !important;
+        }
+        .large-no-padding-#{$side} {
+            padding-#{$side}: 0 !important;
+        }
+    }
+    @include breakpoint(xlarge) {
+        .xlarge-no-margin-#{$side} {
+            margin-#{$side}: 0 !important;
+        }
+        .xlarge-no-padding-#{$side} {
+            padding-#{$side}: 0 !important;
+        }
+    }
+    @include breakpoint(large down) {
+        .medium-down-no-margin-#{$side} {
+            margin-#{$side}: 0 !important;
+        }
+        .medium-down-no-padding-#{$side} {
+            padding-#{$side}: 0 !important;
+        }
+    }
+    @include breakpoint(medium down) {
+        .small-only-no-margin-#{$side} {
+            margin-#{$side}: 0 !important;
+        }
+        .small-only-no-padding-#{$side} {
+            padding-#{$side}: 0 !important;
+        }
+    }
+    .no-margin-#{$side} {
+        margin-#{$side}: 0 !important;
+    }
+    .no-padding-#{$side} {
+        padding-#{$side}: 0 !important;
+    }
+}
+
+@each $display in $displays {
+    @include breakpoint(medium) {
+        .medium-#{$display} {
+            display: #{$display};
+        }
+    }
+    @include breakpoint(large) {
+        .large-#{$display} {
+            display: #{$display};
+        }
+    }
+    @include breakpoint(xlarge) {
+        .xlarge-#{$display} {
+            display: #{$display};
+        }
+    }
+    @include breakpoint(large down) {
+        .medium-down-#{$display} {
+            display: #{$display} !important;
+        }
+    }
+    @include breakpoint(medium down) {
+        .small-only-#{$display} {
+            display: #{$display} !important;
+        }
+    }
+    .#{$display} {
+        display: #{$display};
+    }
+}
+
+@each $float in $floats {
+    @include breakpoint(medium) {
+        .medium-float-#{$float} {
+            float: #{$float} !important;
+        }
+    }
+    @include breakpoint(large) {
+        .large-float-#{$float} {
+            float: #{$float} !important;
+        }
+    }
+    @include breakpoint(xlarge) {
+        .xlarge-float-#{$float} {
+            float: #{$float} !important;
+        }
+    }
+    @include breakpoint(large down) {
+        .medium-down-float-#{$float} {
+            float: #{$float} !important;
+        }
+    }
+    @include breakpoint(medium down) {
+        .small-only-float-#{$float} {
+            float: #{$float} !important;
+        }
+    }
+    .float-#{$float} {
+        float: #{$float} !important;
+    }
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.float-none {
+    float: none !important;
+
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@include breakpoint(medium) {
+    .medium-no-margin {
+        margin: 0 !important;
+    }
+    .medium-no-padding {
+        padding: 0 !important;
+    }
+    .medium-float-none {
+        float: none !important;
+
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@include breakpoint(large) {
+    .large-no-margin {
+        margin: 0 !important;
+    }
+    .large-no-padding {
+        padding: 0 !important;
+    }
+    .large-float-none {
+        float: none !important;
+
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@include breakpoint(xlarge) {
+    .xlarge-no-margin {
+        margin: 0 !important;
+    }
+    .xlarge-no-padding {
+        margin: 0 !important;
+    }
+    .xlarge-float-none {
+        float: none !important;
+
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@include breakpoint(large down) {
+    .medium-down-no-margin {
+        margin: 0 !important;
+    }
+    .medium-down-no-padding {
+        padding: 0 !important;
+    }
+    .medium-down-float-none {
+        float: none !important;
+
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@include breakpoint(medium down) {
+    .small-only-no-margin {
+        margin: 0 !important;
+    }
+    .small-only-no-padding {
+        padding: 0 !important;
+    }
+    .small-only-float-none {
+        float: none !important;
+
+        margin-right: auto;
+        margin-left: auto;
+    }
+}

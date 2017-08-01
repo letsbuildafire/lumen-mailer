@@ -1,0 +1,125 @@
+/* OFFCANVAS STYLES
+-----------------------*/
+
+.site-overlay {
+    position: fixed;
+    z-index: 5000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    transition: opacity 350ms ease;
+
+    opacity: 0;
+    background-color: rgba($black, 0.25);
+}
+
+.site-overlay:not(.ng-hide) {
+    opacity: 1;
+}
+
+aside.offcanvas {
+    position: fixed;
+    z-index: 6000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 260px;
+
+    transition: all 350ms ease;
+    transform: translate(-100%, 0);
+    transform: translate3d(-100%, 0, 0);
+
+    background-color: $off-canvas-colour;
+    box-shadow: 0.1rem 0 0.3rem rgba($black, 0.1);
+    .off-canvas-list {
+        width: 100%;
+        margin: 0;
+
+        list-style: none;
+        li {
+            display: block;
+
+            margin: 0;
+            padding: 0;
+            &.label {
+                font-size: 0.9rem;
+                font-weight: bold;
+                line-height: 48px;
+
+                display: block;
+                overflow: hidden;
+
+                width: 100%;
+                height: 48px;
+                padding-right: 1rem;
+
+                color: $navigation-bar-link-active-colour;
+                background-color: $navigation-bar-colour;
+            }
+            &:not(.label + li).active {
+                background-color: darken($off-canvas-colour, 3%);
+                .md-button.md-flat,
+                .md-button.md-flat md-icon {
+                    color: $off-canvas-link-active-colour;
+
+                    fill: $off-canvas-link-active-icon-colour;
+                }
+            }
+        }
+        .md-button.md-raised {
+            margin: 0.75rem auto;
+        }
+        .md-button.md-flat {
+            font-size: 0.9rem;
+
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0.2rem 1rem;
+
+            text-align: left;
+            vertical-align: middle;
+            text-transform: none;
+
+            color: $off-canvas-link-colour;
+            border-radius: 0;
+            md-icon {
+                margin-right: 1rem;
+
+                color: $off-canvas-link-icon-colour;
+
+                fill: $off-canvas-link-icon-colour;
+            }
+            .md-ripple-container {
+                border-radius: 0;
+            }
+        }
+    }
+    .top-bar-client-logo {
+        position: relative;
+        top: 50%;
+        left: -0.5rem;
+
+        float: left;
+
+        width: 96px;
+        height: 96px;
+        margin: 0;
+        padding: 0;
+
+        transform: translate(0,-50%);
+        transform: translate3d(0,-50%,0);
+        vertical-align: middle;
+
+        border-radius: 50%;
+        background: transparent url(/img/client.png) center center no-repeat;
+        background-size: 96px 96px;
+    }
+}
+
+aside.offcanvas:not(.ng-hide) {
+    transform: none;
+}

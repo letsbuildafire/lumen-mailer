@@ -1,0 +1,370 @@
+/* DATA LIST STYLE
+-------------------------*/
+
+/**
+ * "No content" Panels
+ */
+
+.no-content-panel {
+    max-width: 640px;
+    margin: 1rem 0 2rem;
+
+    transition: all 300ms ease;
+
+    color: $no-content-panel-colour;
+    background-color: $no-content-panel-background-colour;
+    box-shadow: $shadow-level-2;
+    md-card-title {
+        padding: 1rem;
+        .md-headline,
+        .md-subhead {
+            display: block;
+
+            padding: 0;
+
+            text-align: left;
+        }
+        .md-subhead {
+            line-height: 24px;
+            * {
+                vertical-align: middle;
+            }
+        }
+    }
+    md-card-actions {
+        margin: 0;
+        padding: 0.5rem;
+        .md-button {
+            color: $no-content-panel-colour !important;
+            background-color: darken($no-content-panel-background-colour, 10%) !important;
+        }
+    }
+}
+
+.no-content-panel.ng-hide {
+    transform: translate(0,3rem);
+    transform: translate3d(0,3rem,0);
+
+    opacity: 0;
+}
+
+@include breakpoint(medium) {
+    .no-content-panel {
+        margin: 2rem auto;
+        md-card-actions {
+            padding: 1rem;
+        }
+    }
+}
+
+/**
+ *  Filter Toolbar
+ */
+
+md-toolbar.md-filter-toolbar {
+    position: relative;
+
+    display: block;
+
+    width: auto;
+    height: auto;
+    min-height: 0 !important;
+    margin: 0 -1rem;
+    padding: 0;
+
+    background: transparent;
+    &:before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        width: 100vw;
+        height: 100%;
+
+        content: "";
+        transform: translate(-50%,-50%);
+        transform: translate3d(-50%,-50%,0);
+
+        background: $filter-bar-colour;
+        box-shadow: inset 0 0 0.5rem rgba($black, 0.2);
+    }
+    .top-bar-filters {
+        overflow: hidden;
+
+        min-height: 0;
+        max-height: 500px;
+        padding: 0;
+
+        transition: all 400ms ease;
+        text-align: center;
+
+        color: $body-font-color;
+        [ng-form].filter-form,
+        form.filter-form {
+            padding: 2rem 0 0.5rem;
+            md-input-container {
+                font-size: 1rem;
+
+                min-width: 240px;
+                margin: 8px 1rem 2rem 0;
+
+                text-align: left;
+                &:not(.md-input-focused) md-icon {
+                    color: inherit;
+                }
+                .md-errors-spacer {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@include breakpoint(medium) {
+    md-toolbar.md-filter-toolbar {
+        margin: 1rem 0 0;
+        .top-bar-filters {
+            [ng-form].filter-form,
+            form.filter-form {
+                padding: 2rem 0;
+                md-input-container {
+                    margin-bottom: 0 !important;
+                }
+            }
+        }
+    }
+}
+
+md-toolbar.md-filter-toolbar.ng-hide {
+    transition: all 400ms ease;
+    .top-bar-filters {
+        max-height: 0;
+    }
+}
+
+
+/**
+ * Table Toolbar (Sortable Columns)
+ */
+
+md-toolbar.md-table-toolbar {
+    padding: 1rem 0;
+
+    background-color: $white;
+    > .md-subheader {
+        span,
+        .md-button {
+            margin-right: 0;
+
+            vertical-align: middle;
+        }
+    }
+}
+
+/**
+ * Basic List Style
+ */
+
+.la-list {
+    md-table-container {
+        clear: both;
+    }
+    table[md-table] {
+        margin-top: 1rem;
+
+        background-color: $list-background-colour;
+        .actions {
+            width: 96px;
+            &.actions-wide {
+                width: 132px;
+            }
+            .md-button {
+                font-size: 22px;
+                line-height: 22px;
+
+                display: inline-block;
+
+                min-height: 22px;
+                margin: 0 0 0 0.3rem;
+                padding: 6px;
+
+                text-align: center;
+                vertical-align: middle;
+                md-icon {
+                    font-size: inherit;
+                    line-height: inherit;
+
+                    min-height: inherit;
+                    margin: 0 auto;
+                    padding: 0;
+                }
+                &[disabled] {
+                    opacity: 0.6;
+                }
+            }
+        }
+        tbody[md-body] tr[md-row] {
+            height: 72px;
+        }
+        tbody[md-body] tr[md-row] td[md-cell] {
+            border-top: 1px rgba(0, 0, 0, 0.1) solid;
+        }
+        tbody[md-body] > tr[md-row]:not([disabled]):hover {
+            background-color: $list-hover-background-colour;
+        }
+        tbody[md-body] > tr[md-row]:nth-child(odd) {
+            background-color: $list-alternate-background-colour;
+        }
+    }
+    md-table-pagination {
+        margin-bottom: 5vh;
+
+        border-top: 1px rgba(0, 0, 0, 0.2) solid;
+    }
+}
+
+/**
+ * Block List Style
+ */
+
+.la-list-block {
+    table[md-table] {
+        thead[md-head] tr[md-row] {
+            display: block;
+
+            border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+            th[md-column] {
+                line-height: 56px;
+
+                padding: 0 0 0 1.5rem !important;
+            }
+        }
+        tbody[md-body] {
+            tr[md-row] {
+                display: block;
+
+                height: auto;
+
+                border-top: 1px rgba(0, 0, 0, 0.1) solid;
+                td[md-cell] {
+                    display: block;
+                    float: left;
+
+                    border: none;
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Grid List Style 
+ */
+
+.la-list-grid {
+    table[md-table] {
+        thead[md-head] tr[md-row] {
+            display: block;
+
+            border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+            th[md-column] {
+                line-height: 56px;
+
+                padding: 0 0 0 1.5rem !important;
+            }
+        }
+        tbody[md-body] {
+            display: block;
+
+            padding-top: 1rem;
+            tr[md-row] {
+                display: block;
+
+                height: auto;
+                min-height: 300px;
+                &:last-child {
+                    float: left;
+                }
+                td[md-cell] {
+                    display: block;
+
+                    border: none;
+                }
+            }
+        }
+        tbody[md-body] > tr[md-row]:not([disabled]):hover,
+        tbody[md-body] > tr[md-row]:nth-child(odd) {
+            background-color: transparent !important;
+        }
+    }
+}
+
+/**
+ * Short Grid List Style
+ */
+
+.la-list-short-grid {
+    table[md-table] {
+        thead[md-head] tr[md-row] {
+            display: block;
+
+            border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+            th[md-column] {
+                line-height: 56px;
+
+                padding: 0 0 0 1.5rem !important;
+            }
+        }
+        tbody[md-body] {
+            padding-top: 1rem;
+            tr[md-row] {
+                display: block;
+
+                height: auto;
+                padding: 0.5rem 1rem;
+                &:last-child {
+                    float: left;
+                }
+                td[md-cell] {
+                    display: block;
+
+                    border: none;
+                }
+            }
+        }
+        tbody[md-body] > tr[md-row]:not([disabled]):hover,
+        tbody[md-body] > tr[md-row]:nth-child(odd) {
+            background-color: transparent !important;
+        }
+    }
+}
+
+/**
+ * Simple List Style
+ */
+
+.la-list-simple {
+    background-color: $list-background-colour;
+    md-list-item {
+        border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+        &:nth-child(even) {
+            background-color: $list-alternate-background-colour;
+        }
+        &:not([disabled]):hover {
+            background-color: $list-hover-background-colour;
+        }
+        &:last-child {
+            border-bottom: none;
+        }
+        & > .md-button {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        .no-result {
+            padding: 0.5rem 16px;
+        }
+        .md-secondary {
+            vertical-align: middle;
+        }
+    }
+}

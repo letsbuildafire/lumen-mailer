@@ -1,0 +1,20 @@
+/* ERROR STYLE
+-----------------------*/
+
+.error-page {
+    min-height: calc(90vh - #{$navigation-bar-height});
+    padding-top: 15%;
+
+    text-align: center;
+    .error-code {
+        h1 {
+            font-size: 7.5rem;
+            font-weight: bold;
+            line-height: 7rem;
+        }
+        h3 {
+            font-size: 1.6rem;
+            font-style: italic;
+        }
+    }
+}

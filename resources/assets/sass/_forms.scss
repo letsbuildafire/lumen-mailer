@@ -1,0 +1,334 @@
+/* FORM ELEMENTS STYLE
+-----------------------*/
+
+/**
+ * Basic Form Style
+ */
+
+.la-form {
+    fieldset {
+        min-width: 0;
+        margin: 0 auto;
+        padding: 0;
+
+        border: none;
+    }
+    .md-button {
+        input[type=file] {
+            position: absolute;
+            z-index: 100;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+
+            cursor: pointer;
+
+            opacity: 0;
+        }
+    }
+    .hint,
+    .field-label {
+        @extend .hint;
+    }
+    .field-label {
+        position: relative;
+
+        display: block;
+
+        transform: translate(0,-3px);
+        transform: translate3d(0,-3px,0);
+    }
+    .md-subheader {
+        .md-subheader-content {
+            font-size: 1rem;
+            .serif {
+                font-style: italic;
+            }
+        }
+    }
+}
+
+@include breakpoint(medium) {
+    .la-form {
+        .md-subheader {
+            .md-subheader-content {
+                font-size: 1.1rem;
+            }
+        }
+    }
+}
+
+/**
+ * WYSIWYG editor
+ */
+
+div[text-angular],
+text-angular {
+    display: block;
+    overflow: hidden;
+
+    margin-bottom: 2rem;
+    & + [ng-messages] {
+        transform: translate(0,-1.75rem);
+        transform: translate3d(0,-1.75rem,0);
+    }
+    .ta-text.ta-editor,
+    .ta-html.ta-editor {
+        width: 100%;
+
+        border: 0.1rem solid palette(Black, Dividers);
+        background-color: $white;
+    }
+    .md-toolbar.ta-toolbar {
+        display: block;
+        overflow-x: scroll;
+
+        width: calc(100vw - 1.875rem);
+        max-width: 100%;
+        height: 48px;
+        min-height: 48px;
+        margin-bottom: 0.3rem;
+
+        transition: height 200ms ease;
+        white-space: nowrap;
+
+        opacity: 0.8;
+        background-color: $wysiwyg-toolbar-colour;
+        &.focussed {
+            transition: opacity 200ms ease 150ms;
+
+            opacity: 1;
+        }
+        &:not(.focussed) {
+            .md-button {
+                background-color: palette(Black, Dividers);
+            }
+            .md-menu {
+                .md-button {
+                    background-color: palette(Black, Dividers);
+                }
+            }
+        }
+    }
+    .md-toolbar-tools {
+        font-size: 0;
+        line-height: 48px;
+
+        display: block;
+
+        height: 48px;
+        padding: 0;
+        .md-button {
+            line-height: 28px;
+
+            display: inline-block;
+
+            width: 40px;
+            height: 40px;
+            margin-right: 0.4rem;
+            margin-left: 0;
+            padding: 0.5rem;
+
+            vertical-align: middle;
+
+            box-shadow: none !important;
+            md-icon {
+                line-height: 18px;
+
+                color: $wysiwyg-toolbar-button-colour !important;
+            }
+        }
+    }
+    & + [ng-messages] {
+        [ng-message-exp] {
+            font-size: 12px;
+            line-height: 14px;
+
+            overflow: hidden;
+
+            margin-top: 0;
+            padding-top: 5px;
+
+            transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+
+            opacity: 1;
+            color: $warn-theme-colour;
+        }
+    }
+}
+
+.ta-menu-item {
+    line-height: 40px;
+
+    height: 40px;
+    min-height: 40px;
+    button.req {
+        span {
+            font-weight: bold;
+        }
+        span.md-caption {
+            font-weight: normal;
+        }
+    }
+}
+
+/**
+ * Date Time Picker
+ */
+
+.la-time-date {
+    margin-bottom: 2rem;
+    button,
+    .button {
+        min-width: 0;
+        min-height: 0;
+
+        color: $primary-theme-colour;
+    }
+    &.full-mode > .control > .full-title {
+        display: none;
+    }
+}
+
+/**
+ * Form Steps
+ */
+
+.form-step {
+    position: relative;
+
+    padding: 0.5rem 0;
+
+    background: transparent;
+    &.active {
+        &:before {
+            border-top: 1px solid $snow;
+            background-color: $form-step-active-background-colour;
+        }
+        .form-step-toolbar {
+            .md-subheader,
+            .md-subheader-inner {
+                color: $form-step-active-colour;
+            }
+            .md-subheader-content {
+                font-weight: bold;
+            }
+        }
+    }
+    &:before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        width: 100vw;
+        height: 100%;
+
+        content: "";
+        transition: background 200ms ease;
+        transform: translate(-50%, -50%);
+        transform: translate3d(-50%, -50%, 0);
+
+        border-bottom: 1px solid $form-step-border-colour;
+        background: $form-step-background-colour;
+    }
+    .form-step-toolbar {
+        background: transparent;
+        .md-subheader,
+        .md-subheader-inner {
+            transition: color 200ms ease;
+
+            background: transparent;
+        }
+        .md-subheader-inner {
+            padding-right: 0;
+            padding-left: 0;
+        }
+        .md-subheader-content {
+            font-weight: normal;
+
+            min-height: 48px;
+        }
+    }
+    .form-step-body {
+        position: relative;
+        z-index: 1;
+
+        padding: 0.5rem 0 1rem 4.5rem;
+    }
+}
+
+@include breakpoint(medium) {
+    .form-step {
+        .form-step-toolbar {
+            background: transparent;
+            .md-subheader,
+            .md-subheader-inner {
+                transition: color 200ms ease;
+
+                background: transparent;
+            }
+            .md-subheader-inner {
+                padding: 1rem;
+            }
+            .md-subheader-content {
+                line-height: 64px;
+
+                min-height: 64px;
+            }
+        }
+    }
+}
+
+
+/**
+ * Step Indicators
+ */
+
+.step-indicator {
+    font-weight: bold;
+
+    position: relative;
+    z-index: 0;
+
+    display: block;
+
+    width: 2rem;
+    margin: auto;
+    margin-right: 1.5rem;
+
+    color: $form-step-indicator-colour;
+    &:before {
+        line-height: 2.5rem;
+
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+
+        box-sizing: content-box;
+        width: 2.5rem;
+        height: 2.5rem;
+        margin: auto;
+
+        content: "";
+        transition: all 300ms ease-in-out;
+        transform: translate(-50%,-50%);
+        transform: translate3d(-50%,-50%,0);
+
+        border-radius: 50%;
+        background-color: $form-step-indicator-background-colour;
+    }
+}
+
+.form-step.active {
+    .step-indicator {
+        color: $form-step-active-indicator-colour;
+        &:before {
+            width: 3rem;
+            height: 3rem;
+
+            background-color: $form-step-active-indicator-background-colour;
+        }
+    }
+}

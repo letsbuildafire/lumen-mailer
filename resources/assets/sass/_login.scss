@@ -1,0 +1,275 @@
+/* LOGIN STYLE
+-----------------------*/
+
+/**
+ * Login Panel
+ */
+
+.state-admin-login {
+    [ui-view=navigation] {
+        height: auto;
+    }
+}
+
+.login-content {
+    min-height: 100vh;
+    margin-top: -1rem;
+
+    background: $login-background-fade-colour;
+    background: -moz-linear-gradient(45deg, $login-background-fade-colour 0%, $login-background-colour 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, $login-background-fade-colour), color-stop(100%, $login-background-colour));
+    background: -webkit-linear-gradient(45deg, $login-background-fade-colour 0%, $login-background-colour 100%);
+    background: -o-linear-gradient(45deg, $login-background-fade-colour 0%, $login-background-colour 100%);
+    background: -ms-linear-gradient(45deg, $login-background-fade-colour 0%, $login-background-colour 100%);
+    background: linear-gradient(45deg, $login-background-fade-colour 0%, $login-background-colour 100%);
+
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e88e5', endColorstr='#90caf9', GradientType=1 );
+    &:before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        content: "";
+
+        background: transparent url(/img/login-background.png) top left repeat;
+    }
+}
+
+.login-panel {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    overflow: hidden;
+
+    width: 50vw;
+    min-width: 320px;
+    max-width: 400px;
+    height: auto;
+    max-height: 460px;
+    margin: auto;
+    padding: 0 0 4rem;
+
+    transition: transform 400ms ease 300ms, opacity 400ms ease 300ms;
+
+    background-color: $white;
+    box-shadow: $shadow-level-2;
+}
+
+.login-header {
+    position: relative;
+
+    height: 5rem;
+    padding: 0.5rem 1rem 0.25rem;
+}
+
+.login-client-logo {
+    position: absolute;
+    z-index: 1;
+    top: 0.5rem;
+    left: 50%;
+
+    overflow: visible;
+
+    width: 4rem;
+    height: 4rem;
+    padding: 0;
+
+    transform: translate(-50%,0);
+    transform: translate3d(-50%,0,0);
+
+    border-radius: 50%;
+    background: lighten($primary-theme-colour, 10%);
+    span {
+        position: relative;
+        z-index: 2;
+
+        display: block;
+
+        width: 100%;
+        height: 100%;
+
+        content: "";
+
+        border-radius: 50%;
+        background: transparent url(/img/client.png) center center no-repeat;
+        background-size: 100% 100%;
+        background-size: cover;
+    }
+    &:before,
+    &:after {
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+        margin: auto;
+
+        content: "";
+        animation: pulse 1.5s ease-in-out 0s infinite;
+
+        border-radius: 50%;
+        background: $primary-theme-colour;
+    }
+    &:after {
+        animation: pulse 1.9s ease-in-out 0.3s infinite;
+    }
+}
+
+.login-form-header {
+    font-size: 0.95rem;
+
+    max-width: 360px;
+    margin: 0 auto;
+    padding: 0.25rem 1rem 1rem;
+}
+
+.login-form {
+    position: relative;
+    z-index: 1;
+
+    overflow: auto;
+
+    max-width: 360px;
+    height: auto;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.login-form-field {
+    display: block;
+
+    width: 100%;
+    margin: 1rem auto 0;
+
+    transition: margin 200ms ease;
+    &:first-child {
+        margin-top: 0;
+    }
+    &.md-input-focused,
+    &.md-input-has-value {
+        &:not(:first-child) {
+            margin-top: 2rem;
+        }
+        label:not(.md-no-float):not(.md-container-ignore),
+        .md-placeholder {
+            transform: translate(0, 6px) scale(0.75);
+            transform: translate3d(0, 6px, 0) scale(0.75);
+        }
+        input {
+            padding-bottom: 8px;
+        }
+    }
+    &.md-input-focused {
+        input {
+            border: 2px solid $primary-theme-colour;
+        }
+    }
+    label:not(.md-no-float):not(.md-container-ignore),
+    .md-placeholder {
+        padding-left: 10px;
+
+        transform: translate3d(0, 34px, 0) scale(1);
+        transform: translate(0, 34px) scale(1);
+    }
+    input {
+        height: 42px;
+        padding: 8px;
+
+        border: 1px solid palette(Black, Dividers);
+    }
+    .md-errors-spacer {
+        display: none;
+    }
+}
+
+.login-form-actions {
+    overflow: auto;
+
+    height: auto;
+    padding-top: 0.75rem;
+    .login-actions {
+        clear: both;
+        overflow: auto;
+
+        width: 100%;
+        height: auto;
+        .md-button {
+            margin-right: 0;
+        }
+    }
+}
+
+.login-form-footer {
+    font-size: 0.75rem;
+
+    position: absolute;
+    z-index: 0;
+    right: 0;
+    bottom: 0.25rem;
+    left: 0;
+
+    max-width: 360px;
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    color: palette(Black, Secondary Text);
+    h1 {
+        font-size: 3rem;
+        font-weight: lighter;
+        line-height: 2.5rem;
+
+        margin: 0;
+
+        letter-spacing: -0.1rem;
+        text-transform: lowercase;
+
+        color: palette(Black, Dividers);
+    }
+}
+
+@include breakpoint(medium) {
+    .login-panel {
+        bottom: 0;
+    }
+    .login-header {
+        height: 8rem;
+        padding: 1rem 1rem 0.5rem;
+    }
+    .login-client-logo {
+        top: 1rem;
+
+        width: 6rem;
+        height: 6rem;
+    }
+    .login-form-header {
+        padding: 0.5rem 1rem 1rem;
+    }
+}
+
+@include breakpoint(large) {
+    .login-content {
+        margin-top: -2rem;
+    }
+}
+
+
+/**
+ * Login Panel Animation
+ */
+
+.login-panel.ng-hide {
+    transition-delay: 0, 0;
+    transform: translate3d(0,4rem,0);
+    transform: translate(0,4rem);
+
+    opacity: 0;
+}

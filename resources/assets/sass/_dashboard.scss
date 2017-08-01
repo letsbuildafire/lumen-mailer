@@ -1,0 +1,371 @@
+/* DASHBOARD STYLE
+-----------------------*/
+
+.admin-dashboard {
+    .dashboard-panels {
+        padding: 0;
+        & > .columns {
+            padding-right: 0;
+            padding-left: 0;
+            & > .columns {
+                padding-right: 0.5rem;
+                padding-left: 0.5rem;
+            }
+        }
+    }
+}
+
+.dashboard-intro {
+    padding-bottom: 1rem;
+    .dashboard-intro-header {
+        padding-left: 0.5rem;
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 500;
+
+            margin-bottom: 2rem;
+            padding: 0.5rem 0;
+
+            color: $primary-theme-colour;
+        }
+        h3 {
+            font-size: 1.1rem;
+
+            color: lighten($body-font-color, 20%);
+        }
+    }
+}
+
+.la-dashboard-intro-list {
+    padding: 0;
+    md-list-item {
+        min-height: 8rem;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+
+        background: transparent !important;
+        .md-list-item-text {
+            position: relative;
+
+            display: block;
+
+            width: 100%;
+            padding: 0 1rem 0 5.5rem;
+
+            color: lighten($body-font-color, 5%);
+            .list-icon {
+                position: absolute;
+                top: 50%;
+                left: 0.25rem;
+
+                display: block;
+
+                width: 4rem;
+                height: 4rem;
+
+                transform: translate(0,-50%);
+                transform: translate3d(0,-50%,0);
+                vertical-align: middle;
+
+                border-radius: 50%;
+                background: transparent url(/img/dashboard-intro-sprites.png) top center no-repeat;
+                background-size: 4rem auto;
+                &.add-list-icon {
+                    background-position: 0 23%;
+                }
+                &.add-subscriber-icon {
+                    background-position: 0 46%;
+                }
+                &.add-emailer-icon {
+                    background-position: 0 0;
+                }
+            }
+            h3 {
+                font-size: 1rem;
+                font-weight: 500;
+                line-height: 1.6;
+
+                margin-bottom: 0.5rem;
+
+                white-space: normal;
+            }
+            span {
+                font-size: 0.9rem;
+            }
+            .columns {
+                padding: 0;
+                &:last-child {
+                    padding-left: 1rem;
+                }
+                .md-button {
+                    margin-top: 1.5rem;
+                }
+            }
+        }
+    }
+}
+
+md-card.dashboard-panel {
+    position: relative;
+
+    overflow: hidden;
+
+    margin: 0 auto 0.5rem;
+    padding-right: 0;
+    padding-left: 0;
+
+    background-color: $body-background;
+    box-shadow: none;
+    &.purple {
+        md-card-title {
+            background-color: palette(Purple, 700);
+        }
+        .md-subhead:before {
+            background-color: palette(Purple, 800);
+        }
+        md-card-content {
+            background-color: palette(Purple, 50);
+        }
+        md-icon,
+        .md-card-accent,
+        md-card-actions .md-button md-icon {
+            color: palette(Purple, 800);
+        }
+    }
+    &.orange {
+        md-card-title {
+            background-color: palette(Orange, 700);
+        }
+        .md-subhead:before {
+            background-color: palette(Orange, 800);
+        }
+        md-card-content {
+            background-color: palette(Orange, 50);
+        }
+        md-icon,
+        .md-card-accent,
+        md-card-actions .md-button md-icon {
+            color: palette(Orange, 800);
+        }
+    }
+    &.green {
+        md-card-title {
+            background-color: palette(Green, 700);
+        }
+        .md-subhead:before {
+            background-color: palette(Green, 800);
+        }
+        md-card-content {
+            background-color: palette(Green, 50);
+        }
+        md-icon,
+        .md-card-accent,
+        md-card-actions .md-button md-icon {
+            color: palette(Green, 800);
+        }
+    }
+    &.blue {
+        md-card-title {
+            background-color: palette(Blue, 700);
+        }
+        .md-subhead:before {
+            background-color: palette(Blue, 800);
+        }
+        md-card-content {
+            background-color: palette(Blue, 50);
+        }
+        md-icon,
+        .md-card-accent,
+        md-card-actions .md-button md-icon {
+            color: palette(Blue, 800);
+        }
+    }
+    md-card-title {
+        position: relative;
+
+        height: auto;
+        padding: 0;
+    }
+    md-card-title-text,
+    md-card-title-text:not(:only-child) {
+        .md-headline,
+        .md-subhead {
+            position: relative;
+            z-index: 1;
+
+            display: block;
+
+            padding: 1rem 0.75rem;
+
+            text-align: left;
+
+            color: $snow;
+        }
+        .md-headline {
+            font-size: 1rem;
+            font-weight: bold;
+            line-height: 1.25rem;
+        }
+        .md-subhead {
+            display: block;
+
+            width: 100%;
+            padding: 0.25rem 0.75rem;
+            &:before {
+                position: absolute;
+                z-index: -1;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+
+                display: block;
+
+                content: "";
+            }
+        }
+        md-icon {
+            font-size: 6rem;
+            line-height: 1;
+
+            position: absolute;
+            z-index: 0;
+            top: 33%;
+            left: 100%;
+
+            transform: translate(-8.1rem, -3.1rem);
+            transform: translate3d(-8.1rem, -3.1rem, 0);
+        }
+    }
+    md-card-content {
+        margin: 0;
+        padding: 0 0.75rem;
+
+        background-color: transparent;
+        md-list {
+            margin: 0 -0.75rem;
+            padding: 0;
+
+            background-color: transparent;
+            md-list-item {
+                min-height: 0;
+                padding: 0;
+                .md-list-item-text {
+                    white-space: nowrap;
+
+                    color: $body-font-color !important;
+                }
+            }
+            .md-list-item-text {
+                display: block;
+
+                width: 100%;
+                margin: 0;
+            }
+        }
+    }
+    md-card-actions {
+        line-height: 5rem;
+
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+        margin: 0;
+        padding: 0.5rem;
+
+        background-color: transparent;
+        .md-button,
+        .md-button:hover {
+            vertical-align: middle;
+
+            background-color: $white;
+        }
+    }
+}
+
+md-card.dashboard-panel.dashboard-panel-help {
+    md-card-actions {
+        line-height: 2rem;
+    }
+}
+
+@include breakpoint(medium) {
+    .admin-dashboard {
+        .dashboard-panels {
+            padding-right: 0.25rem;
+            padding-left: 0.25rem;
+            & > .columns {
+                padding-right: 0;
+                padding-left: 0;
+                & > .columns {
+                    padding-right: 0.25rem;
+                    padding-left: 0.25rem;
+                }
+            }
+        }
+    }
+    .la-dashboard-intro-list {
+        md-list-item {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            .md-list-item-text {
+                padding-left: 7.5rem;
+                .list-icon {
+                    left: 0.5rem;
+
+                    width: 6rem;
+                    height: 6rem;
+
+                    background-size: 6rem auto;
+                }
+                h3 {
+                    font-size: 1.1rem;
+
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+    md-card.dashboard-panel {
+        md-card-title {
+            .md-subhead {
+                padding: 0.5rem 0.75rem;
+            }
+            > .md-button {
+                margin: auto 0.75rem;
+            }
+        }
+        md-card-content {
+            padding: 0 0.75rem;
+            md-list {
+                margin: 0 -0.75rem;
+            }
+        }
+        md-card-actions {
+            padding: 0.5rem 0.75rem;
+        }
+    }
+}
+
+@include breakpoint(large) {
+    .admin-dashboard {
+        .dashboard-panels {
+            padding-right: 0.5rem;
+            padding-left: 0.5rem;
+            & > .columns {
+                padding-right: 0.5rem;
+                padding-left: 0.5rem;
+                & > .columns {
+                    padding-right: 0;
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+    md-card.dashboard-panel {
+        margin-bottom: 1rem;
+    }
+}
